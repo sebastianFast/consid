@@ -1,0 +1,35 @@
+.navLink{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+
+.ulLink{
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.liLink{
+    margin: 0px 4px;
+}
+
+.aLink{
+    height: 20px;
+    width: 20px;
+    outline: none;
+    border: none;
+    box-shadow: var(--button-shadow);
+    background-color: var(--bark);
+    border-radius: 5px;
+    color: var(--lightText);
+    transition: all 0.3s ease-in-out;
+}
+
+.aLink:hover,
+.aLink:focus{
+    background-color: var(--antique);
+    color: var(--bark);
+}

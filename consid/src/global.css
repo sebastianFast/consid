@@ -1,0 +1,69 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+* [type="button"]{
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    border: none;
+    outline: none;
+}
+
+* h1, h2, h3, h4, h5, p{
+    pointer-events: none;
+}
+
+* li{
+    list-style-type: none;
+    cursor: pointer;
+}
+
+* a{
+    text-decoration: none;
+}
+
+:root{
+    /*
+    Page Colors
+    */
+    --mainColor: #FDF8E2;
+    --bark: #C4A484;
+    --antique: antiquewhite;
+    --green: rgb(7,218,165);
+    /*
+    Font-sizes
+    */
+    --small: 12px;
+    --standard: 16px;
+    --medium: 18px;
+    --semi: 24px;
+    --large: 34px;
+    --mega: 64px;
+    /*
+    Font-Family
+    */
+    --title: Noto Serif;
+    /*
+    Font-colors
+    */
+    --darkText: #333;
+    --lightText: #fff;
+
+    /*
+    Hover Brightness
+    */
+    --hover-brightness: 0.8;
+
+    /*
+    Button Colors
+    */
+
+    /*
+    Box Shadow
+    */
+    --shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
+    --button-shadow:rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    
+}

@@ -1,0 +1,63 @@
+.myCart,
+.nonIndexCart{
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--small);
+    color: var(--bark);
+    position: relative;
+    cursor: pointer;
+}
+
+
+/*
+Hidden cart text
+*/
+
+.cartMenuText,
+.nonIndexCart{
+    position: absolute;
+    width: 100px;
+    left: -80px;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.nonIndexCart{
+    left: -92px;
+    color:var(--antique) !important;
+}
+
+.imageHolder{
+    margin: 0px 2px;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.itemCounter{
+    height: 12px;
+    width: 12px;
+    padding: 3px;
+    background: rgba(255,255,255, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--bark);
+    
+}
+
+.item{
+    color: var(--darkText);
+    font-size: var(--small);
+}

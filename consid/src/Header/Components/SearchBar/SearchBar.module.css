@@ -1,0 +1,213 @@
+
+
+
+.searchForm{
+    width: 100%;
+    
+}
+
+.searchBar{
+    width: 350px;
+    position: relative;
+}
+
+.label{
+    background-color: var(--bark);
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin-right: 5px;
+    font-size: var(--small);
+    color: var(--lightText);
+}
+
+.search{
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    padding: 6px 10px;
+    font-size: var(--small);
+    color: var(--bark)
+}
+
+.search::placeholder{
+    color:var(--bark)
+}
+
+.search:focus{
+    border: 1px solid var(--bark);
+}
+
+/*
+Search Box Pop
+*/
+
+.searchResults,
+.searchResultsError{
+    height: auto;
+    position: absolute;
+    top: 5px;
+    left: 65%;
+    width: 280px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    transform: translate(-50%, 30px);
+    background: var(--bark);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    padding: 5px 10px 5px 10px;
+    max-height: 50vh;
+    overflow: auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.searchResults::-webkit-scrollbar,
+.searchResultsError::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .searchResults,
+  .searchResultsError {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+
+.searchResultsError{
+    align-items: center;
+    justify-content: center;
+}
+
+
+.searchBox,
+.searchBoxError{
+    height: auto;
+    width: 100%;
+    position: relative;
+}
+.searchBoxError{
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resultBox{
+    height: auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    padding: 10px;
+    background-color: var(--antique);
+    margin: 0px 0px 10px 0px;
+}
+
+.imageContainer{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--bark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--antique);
+}
+
+.image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.errorLi{
+    cursor: unset;
+    pointer-events: none;
+    font-size: var(--small);
+    font-family: var(--title);
+    color: var(--antique);
+    text-align: center;
+}
+
+/*
+Result informationen
+*/
+
+.resultInfo{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+    padding: 0px 20px;
+}
+
+/*
+Cancel button
+*/
+
+.cancelButton{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background-color: transparent;
+    z-index: 99;
+}
+
+.cancelButton span{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.cancelButton span::after{
+    content: "";
+    width: 12px;
+    height: 2px;
+    border: 10px;
+    position: absolute;
+    background-color: var(--darkText);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.cancelButton span::before{
+    content: "";
+    width: 12px;
+    height: 2px;
+    border: 10px;
+    position: absolute;
+    background-color: var(--darkText);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+/*
+Button 
+*/
+
+.borrowBook{
+    height: 25px;
+    width: 80px;
+    background-color: var(--green);
+    border-radius: 5px;
+    color: var(--lightText);
+    box-shadow: var(--button-shadow);
+    margin: 5px 0px 0px 0px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.borrowBook:hover{
+    background-color: var(--bark);
+    color: var(--antique);
+}

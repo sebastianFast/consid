@@ -1,0 +1,113 @@
+
+.form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.mainForm{
+    height: 90%;
+    width: auto;
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.manage{
+    text-align: center;
+    font-size: var(--semi);
+    font-family: Yearbook;
+    margin-bottom: 10px;
+}
+
+
+[type="text"],
+[type="number"]{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    box-shadow: var(--button-shadow);
+    padding: 6px 8px;
+    width: 95%;
+}
+
+
+
+[type="text"]::placeholder,
+[type="number"]::placeholder{
+    background-color: transparent;
+    font-size: 12px;
+    color: silver;
+    letter-spacing: 0.2px;
+    font-family: Yearbook;
+}
+
+.label{
+    font-size: 8px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.formContainer{
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 50px;
+    overflow: auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.formContainer::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .formContainer{
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+.formGroups{
+    height: auto;
+    width: 100%;
+    display: flex;
+   flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+/*
+Edit button
+*/
+
+.editButton{
+    margin-top: 20px;
+    border: none;
+    outline:none;
+    height: auto;
+    padding: 8px 12px;
+    border-radius: 5px;
+    box-shadow: var(--button-shadow);
+    background-color: var(--bark);
+    color: var(--lightText);
+    width: 95%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.editButton:hover{
+    background-color: var(--green);
+    letter-spacing: 0.8px;
+}

@@ -1,0 +1,73 @@
+.header,
+.headerNonIndex{
+    height: 60px;
+    padding: 0 15px;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: transparent;
+    z-index: 9;
+}
+
+.headerNonIndex{
+    background-color: var(--bark) !important;
+}
+
+/*
+ Logo CSS
+*/
+.logoContainer{
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+}
+
+/*
+ Header Container CSS
+*/
+.listContainer,
+.searchContainer,
+.myCartContainer{
+    flex: 1;
+    font-size: 14px; 
+    display: flex;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchContainer{
+    justify-content: flex-end;
+}
+
+.listContainer{
+    margin-left: 45px;
+    color: var(--bark);
+}
+
+.myCartContainer{
+    flex: 0.7;
+    justify-content: flex-start;
+}
+
+/*
+ Nav UL
+*/
+
+.listContainer > ul{
+    height: auto;
+    width: auto;
+    display: flex;
+}

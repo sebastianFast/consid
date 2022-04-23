@@ -1,0 +1,21 @@
+
+.listButton,
+.listButtonNonIndex{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    margin: 0px 8px;
+    font-size: var(--standard);
+}
+
+.listButton:hover,
+.listButtonNonIndex:hover{
+    filter: brightness(var(--hover-brightness))
+}
+
+.listButtonNonIndex{
+    color: var(--antique) !important;
+}

@@ -1,0 +1,142 @@
+.loginMain,
+.loggedIn{
+    height: 85vh;
+    height: 85vh;
+    width: 70vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 999;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.loggedIn{
+    align-items: flex-start;
+}
+
+/*
+X to close login box
+*/
+
+.closeContainer{
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    height: 100px;
+    width: 250px;
+    background-color: var(--green);
+    border-radius: 5px;
+    clip-path: circle(10% at 90% 20%);
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+}
+
+.closeContainer:hover{
+    clip-path: circle(75%);
+    background-color: var(--bark);
+}
+
+.closeLogin{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color: var(--lightText);
+}
+
+.closeLogin::after{
+    content: "";
+    height: 3px;
+    width: 20px;
+    background-color: var(--lightText);
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    transform: rotate(45deg);
+    border-radius: 15px;
+}
+
+.closeLogin::before{
+    content: "";
+    height: 3px;
+    width: 20px;
+    background-color: var(--lightText);
+    position: absolute; 
+    top: 20px;
+    right: 20px;
+    top: 18px;
+    right: 15px;
+    transform: rotate(-45deg);
+    border-radius: 15px;
+}
+
+.closeLogin:hover::after{
+-webkit-animation:spin 0.6s linear ;
+-moz-animation:spin 0.6s linear ;
+animation:spin 0.6s linear ;
+}
+
+@-moz-keyframes spin { 
+100% { 
+    -moz-transform: rotate(360deg); 
+} 
+}
+@-webkit-keyframes spin { 
+100% {
+     -webkit-transform:  rotate(360deg); 
+    } 
+}
+@keyframes spin { 
+100% { 
+    -webkit-transform:  rotate(360deg); 
+    transform:  rotate(360deg); 
+} 
+}
+
+.closeLogin:hover::before{
+-webkit-animation:spinNeg 0.6s linear;
+-moz-animation:spinNeg 0.6s linear ;
+animation:spinNeg 0.6s linear ;
+}
+
+@-moz-keyframes spinNeg { 
+100% {
+    -moz-transform: rotate(445deg); 
+} 
+}
+@-webkit-keyframes spinNeg { 
+100% {
+     -webkit-transform: rotate(445deg); 
+    } 
+}
+@keyframes spinNeg { 
+100% { 
+    -webkit-transform: rotate(445deg); 
+    transform:  rotate(445deg); 
+} 
+}
+
+
+/*
+SVG background
+*/
+
+.svg{
+    position: absolute;
+    bottom: 0;
+    left: -50px;
+    width: 250%;
+    height: auto;
+    pointer-events: none;
+    z-index: -1;
+}

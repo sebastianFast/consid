@@ -1,0 +1,94 @@
+
+
+.wrapper{
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.itemText{
+    height: auto;
+    width: fit-content;
+}
+
+.itemTitle{
+    font-size: var(--semi);
+    color: var(--darkText);
+    font-family: var(--title);
+}
+
+.itemAuthor{
+    font-weight: 600;
+    font-size: var(--standard);
+    letter-spacing: 0.2px;
+}
+
+.itemType{
+    font-size: var(--standard);
+    color: var(--darkText);
+}
+
+.readMore{
+    height: auto;
+    letter-spacing: 0.2px;
+    line-height: 1.1;
+    color: var(--darkText);
+    margin: 10px 0px;
+}
+
+.readMore span{
+    color: var(--bark);
+}
+
+.itemStatus{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.itemStatus p{
+    font-style: italic;
+    font-weight: 500;
+    font-size: var(--standard);
+    margin-right: 10px;
+}
+
+.borrowBook,
+.returnBook{
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--green);
+    color: var(--lightText);
+    box-shadow: var(--button-shadow);
+    transition: all 0.3s ease-in-out;
+}
+
+.returnBook{
+    background: var(--bark);
+    color: var(--antique);
+}
+
+.returnBook:hover{
+    background-color: var(--green);
+    color: var(--lightText);
+}
+
+.borrowBook:hover{
+    background-color: var(--bark);
+    color: var(--antique);
+}
+
+.itemBorrower{
+    font-weight: 500;
+    margin-right: 5px;
+}
+

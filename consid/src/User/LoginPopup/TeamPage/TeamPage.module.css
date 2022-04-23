@@ -1,0 +1,134 @@
+
+/*
+Welcome div
+*/
+
+.welcome{
+    height: 100%;
+    width: 190px;
+    padding: 10px;
+    position: relative;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+.logout{
+    margin-top: 20px;
+    border: none;
+    outline:none;
+    height: auto;
+    padding: 8px 12px;
+    border-radius: 5px;
+    box-shadow: var(--button-shadow);
+    background-color: var(--green);
+    color: var(--lightText);
+    width: 80%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.logout:hover{
+    background-color: var(--bark);
+    letter-spacing: 0.8px;
+}
+
+.imageContainer{
+    height: 120px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.text{
+    font-size: var(--semi);
+    font-family: var(--title);
+    color: var(--bark);
+    filter: brightness(0.9);
+    margin-top: 8px;
+    text-align: center;
+}
+
+.position{
+    font-size: var(--standard);
+    letter-spacing: 0.2px;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.teamNav{
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.teamUl{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.teamLi{
+    height: 35px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: var(--bark);
+    color: var(--antique);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--standard);
+    letter-spacing: 0.2px;
+    margin: 10px 0px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: var(--button-shadow);
+}
+
+.teamLi:first-child{
+    margin:40px 0px 10px 0px;
+}
+
+.teamLi:hover,
+.teamLi:focus,
+.teamLi:active{
+    background-color: var(--green);
+    color: var(--lightText); 
+}
+
+.slideMenu{
+    height: 80%;
+    width: calc(90% - 160px);
+    position: fixed;
+    left: calc(40% - -178px);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skoobTitle{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
