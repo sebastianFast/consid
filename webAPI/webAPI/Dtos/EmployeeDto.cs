@@ -9,9 +9,8 @@ namespace webAPI.Dtos
     public bool IsCEO {get; init;}
     public bool IsManager {get; init;}
     public int ManagerId {get; init;}
+     public int Team {get; init;}
    
-    public string Email {get; init;} = default!;
-    
-    public string Password {get; init;} = default!;
 }
+
 }

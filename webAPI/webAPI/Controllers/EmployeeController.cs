@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace webAPI.Controllers
 {
     // employees
@@ -70,6 +71,8 @@ namespace webAPI.Controllers
            return NoContent();
         }
 
+
+
         //POST /employee
         [HttpPost]
         public async Task<ActionResult<EmployeeDto>> CreateItemAsync(CreateEmployeeDto employeeDto){
@@ -82,6 +85,7 @@ namespace webAPI.Controllers
                 if(employeeDto.IsCEO == true && employee.IsCEO == true){
                     throw new Exception("Can only have one CEO!");
                 }
+              
                 });
                 //Check if CEO && Manager 
                 if(employeeDto.IsCEO == true && employeeDto.IsManager == true){
@@ -91,7 +95,7 @@ namespace webAPI.Controllers
                 //Calculate Coefficients
                 decimal employeeCoe = 1.125m;
                 decimal managerCoe = 1.725m;
-                decimal ceoCoe = 2.725m; // ?
+                decimal ceoCoe = 2.725m; 
                 var sal = new EmployeeDto{};
                 
                 if(employeeDto.IsCEO == false && employeeDto.IsManager == false){
@@ -104,7 +108,14 @@ namespace webAPI.Controllers
                     sal = new EmployeeDto {Salary = (decimal)(employeeDto.Salary * ceoCoe)};
                 }
 
+                //Employee Team
+               
+
                 //Assign manager ID's
+                //Tänkte använda det här för team systemet och managing systemet
+                //Fick inte teams att fungera -- när man console loggar den så är den rätt men 
+                //När den skapas så blir team 0 av någon anledning -- 
+                
                 //0 for Employee
                 //1 for CEO
                 //2 or highest + 1 for Managers
@@ -115,16 +126,18 @@ namespace webAPI.Controllers
                     employeeDto.ManagerId = 1;
                 }
                 if(employeeDto.IsManager == true){
-                    Console.WriteLine(existingList.Count);
                     var biggest = 2;
+
                   for(int i = 0; i<existingList.Count; i++){
-                    if(existingList[i].ManagerId > biggest){
+                    if(existingList[i].ManagerId >= biggest){
                         biggest = existingList[i].ManagerId + 1;
                     } 
                   }
-                  employeeDto.ManagerId = biggest;
+                    employeeDto.ManagerId = biggest;  
                 }
 
+                employeeDto.Team = employeeDto.ManagerId;
+                Console.WriteLine(employeeDto.Team);
 
                 //Create new Employee
                 Employee employee = new(){
@@ -134,8 +147,11 @@ namespace webAPI.Controllers
                 Salary = sal.Salary,
                 IsCEO = employeeDto.IsCEO,
                 IsManager = employeeDto.IsManager,
-                ManagerId = employeeDto.ManagerId
+                ManagerId = employeeDto.ManagerId,
+                Team = employeeDto.Team
             };
+
+            Console.WriteLine(employee);
 
             await repository.CreateEmployeeAsync(employee);
 
@@ -148,25 +164,48 @@ namespace webAPI.Controllers
         }
 
         //PUT /employee{id}
-        [HttpPut("/{loginId}/{id}")]
-        public async Task<ActionResult> UpdateEmployeeAsync(Guid login, Guid id, UpdateEmployeeDto employeeDto){
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateEmployeeAsync( Guid id, UpdateEmployeeDto employeeDto){
             try{
-                var loggedInEmployee = await repository.GetEmployeeAsync(login);
-                // "get" allowed actions, validate if update is possible
-                if(loggedInEmployee is null){
-                    return NotFound();
+              
+                List<Employee> existingList = (List<Employee>) repository.GetEmployeesAsync().Result;
+                existingList.ForEach(employee => {
+                if(employeeDto.IsCEO == true && employee.IsCEO == true){
+                    throw new Exception("Can only have one CEO!");
+                }
+             
+                });
+
+
+                //Check if CEO && Manager 
+                if(employeeDto.IsCEO == true && employeeDto.IsManager == true){
+                    throw new Exception("You can't assign a user both CEO and Manager!");
                 }
 
+                
+
                 var existingEmployee = await repository.GetEmployeeAsync(id);
+
+              
 
                 //If Employee doesnt exists return not found
                 if(existingEmployee is null){
                     return NotFound();
                 }
 
-                if(!PermissionService.CanManage(loggedInEmployee, existingEmployee)) {
-                    return BadRequest("Not allowed");
+                  //Check for manager and CEO
+                
+                if(employeeDto.IsCEO == true && existingEmployee.IsManager == false){
+                    throw new Exception("CEO's cant update Employees");
                 }
+                  if(employeeDto.IsManager == true && existingEmployee.IsCEO == true){
+                    throw new Exception("Managers's cant update CEO's");
+                }
+                 if(employeeDto.IsManager == false && existingEmployee.IsCEO == false){
+                    throw new Exception("Employees cant update users");
+                }
+
+            
 
             //Update Employee
             Employee updatedEmployee = existingEmployee with {
@@ -175,7 +214,8 @@ namespace webAPI.Controllers
                 Salary = employeeDto.Salary,
                 IsCEO = employeeDto.IsCEO,
                 IsManager = employeeDto.IsManager,
-                ManagerId = employeeDto.ManagerId
+                ManagerId = employeeDto.ManagerId,
+                Team = employeeDto.Team
             };
 
             await repository.UpdateEmployeeAsync(updatedEmployee);
@@ -190,20 +230,12 @@ namespace webAPI.Controllers
 
 
         //Delete /employee/{id}
-        [HttpDelete("/{loginId}/{id}")]
-        public async Task<ActionResult> DeleteEmployeeAsync(Guid login, Guid id){
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteEmployeeAsync( Guid id){
             try{
-                var loggedInEmployee = await repository.GetEmployeeAsync(login);
-                // "get" allowed actions, validate if update is possible
-                if(loggedInEmployee is null){
-                    return NotFound();
-                }
-            var existingEmployee = await repository.GetEmployeeAsync(id);
 
-            if(!PermissionService.CanDelete(loggedInEmployee, existingEmployee)) {
-                    return BadRequest("Not allowed");
-            }
             //If employee doesnt exist return not found
+            var existingEmployee = await repository.GetEmployeeAsync(id);
             if(existingEmployee is null){
                 return NotFound();
             }
@@ -216,20 +248,6 @@ namespace webAPI.Controllers
                 Console.WriteLine(e.Message);
             }
            return NoContent();
-        }
-
-        //Login /login{id}
-        [HttpPost("/login")]
-        public async Task<ActionResult<EmployeeDto>>LogInUser(string email, string password){
-                var loggedInEmployee = await repository.GetEmployeeAsync(email);
-                // "get" allowed actions, validate if update is possible
-                if(loggedInEmployee is null){
-                    return NotFound();
-                }
-                if(password == loggedInEmployee.Password){
-                    return loggedInEmployee.AsDto();
-                }
-                return BadRequest("Incorrect password");
         }
     }
 }

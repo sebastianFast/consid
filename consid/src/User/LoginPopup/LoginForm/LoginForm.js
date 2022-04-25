@@ -4,9 +4,10 @@ import classes from "./LoginForm.module.css"
 const LoginForm = ({login, error, setError}) => {
     const [details, setDetails] = useState({ email: "", password: ""})
     
-    const submitHandler = e => {
+    const submitHandler = async e => {
         e.preventDefault()
 
+      
         login(details)
     }
 

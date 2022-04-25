@@ -4,7 +4,6 @@ import {UserContext} from "../../../../../Contexts/UserContext"
 import defaultImage from "../../../../../images/defaultImage/default-book.png"
 import { deleteUser } from '../../../../../FETCH/DELETE/delete'
 import HandleEmployee from './Components/HandleEmployee'
-import { fetchEmployeeSorted } from '../../../../../FETCH/GET/get'
 
 const Manage = ({admin}) => {
   const {employee, setEmployee} = useContext(UserContext)
@@ -19,8 +18,10 @@ const Manage = ({admin}) => {
     id: "",
     isManager: undefined,
     isCEO: undefined,
-    managerId: ""
+    managerId: "",
+    team: ""
   })
+
   const[details, setDetails] = useState({ 
     firstname: "",
     lastname: "",
@@ -103,7 +104,8 @@ const handleEmployee = async (emp) =>{
       isCEO: emp.isCEO,
       isManager: emp.isManager,
       managerId: emp.managerId,
-      id: emp.id
+      id: emp.id,
+      team: emp.team
     })
     setEditEmployee(true)
     setSearch(<li>Employee Edited</li>)

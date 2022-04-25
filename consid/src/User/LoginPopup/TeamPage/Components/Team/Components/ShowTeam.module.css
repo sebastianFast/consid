@@ -1,0 +1,50 @@
+
+.manageLi{
+    height: 110px;
+    width: 280px;
+    box-shadow: var(--button-shadow);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: unset;
+    padding: 10px;
+    background: white;
+    margin: 5px 0px;
+}
+
+.imageHolder{
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.employeeImage{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.employeeInfo{
+    height: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.name{
+    font-size: var(--semi);
+    font-family: var(--title);
+}
+
+.position{
+    font-size: var(--small);
+    letter-spacing: 0.2px;
+    font-style: italic;
+}

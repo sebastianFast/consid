@@ -5,7 +5,7 @@ import {UserContext} from "../../../../../Contexts/UserContext"
 
 const Create = () => {
   
-  const {employee} = useContext(UserContext)
+  const {employee, setEmployee} = useContext(UserContext)
   const ceoRef = useRef()
   const managerRef = useRef()
   const employeeRef = useRef()
@@ -41,7 +41,7 @@ const Create = () => {
 
     //Takes care of the submit
     const submitHandler = async (e) => {
-        e.preventDefault()
+      e.preventDefault()
         for(let i = 0; i<employee.length; i++){
           if(employee[i].isCEO === true && details.isCEO === true){
             console.log("Cant have 2 CEOS")
@@ -50,6 +50,7 @@ const Create = () => {
         }
         try{
           await addNewUser(details)
+         
           return
         }catch(e){
             console.log(e)

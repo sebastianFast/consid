@@ -37,12 +37,7 @@ namespace webAPI.Repositories
             return await itemsCollection.Find(filter).SingleOrDefaultAsync();
         }
 
-           //return a specific employee by email
-        public async Task<Employee> GetEmployeeAsync(string email)
-        {
-            var filter = filterBuilder.Eq(employee => employee.Email, email);
-            return await itemsCollection.Find(filter).SingleOrDefaultAsync();
-        }
+
 
         //return all employees unsorted
         public async Task<IEnumerable<Employee>> GetEmployeesAsync()
@@ -66,7 +61,6 @@ namespace webAPI.Repositories
            await itemsCollection.ReplaceOneAsync(filter, employee);
         }
 
-        //Login employee
         
     }
 }

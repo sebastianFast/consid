@@ -13,9 +13,7 @@ namespace webAPI.Dtos
     public bool IsCEO {get; init;}
     public bool IsManager {get; init;}
     public int ManagerId {get; set;}
-    [Required]
-    public string Email {get; init;} = default!;
-     [Required]
-    public string Password {get; init;} = default!;
+    
+    public int Team {get; set;}
     }
 }

@@ -3,7 +3,6 @@ import classes from "./LoginPopup.module.css"
 import Overlay from "../../Overlay/Overlay"
 import LoginForm from "./LoginForm/LoginForm"
 import TeamPage from "./TeamPage/TeamPage"
-import { logIn } from "../../FETCH/POST/post"
 
 
 const LoginPopup = ({handleLogin, loggedIn}) =>{
@@ -26,12 +25,7 @@ const LoginPopup = ({handleLogin, loggedIn}) =>{
               name: admin.name,
                email: details.email
            })
-           try{
-            await logIn(user);
-            return
-           }catch(e){
-               console.log(e)
-           }
+          
 
        }else {
            setError("Details do not match")

@@ -56,7 +56,7 @@ const ItemCards = ({item, returnItem, borrowBook, setButtonCheck, setPopup, hand
     }
    {(item?.isBorrowable === true || item?.type === "Ref. Book") ? 
    <>
-     <button onClick={(e)=>{handleEdit(e)}} type="button" className={classes.editItem}>
+     <button onClick={(e)=>{handleEdit(e, item)}} type="button" className={classes.editItem}>
      edit
     </button>
    

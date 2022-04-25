@@ -11,6 +11,8 @@ const fetchEmployee = async (setEmployee) => {
      .catch(error => console.log("Error"));
    }
 
+
+
    const fetchEmployeeSorted = async (setEmployee) => {
      console.log(setEmployee)
     await fetch("https://localhost:7174/employee")
@@ -126,4 +128,4 @@ const fetchEmployee = async (setEmployee) => {
      }
 
 
-    export {fetchSearchItemAllString, fetchEmployeeSorted, fetchTitle, fetchItems, fetchEmployee, fetchCategory, fetchOneCategory, fetchOneItems, fetchOneEmployee, fetchSearchItem, fetchSearchItemAuthor}
+    export {  fetchSearchItemAllString, fetchEmployeeSorted, fetchTitle, fetchItems, fetchEmployee, fetchCategory, fetchOneCategory, fetchOneItems, fetchOneEmployee, fetchSearchItem, fetchSearchItemAuthor}

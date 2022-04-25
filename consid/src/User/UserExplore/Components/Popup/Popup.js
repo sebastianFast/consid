@@ -66,9 +66,9 @@ const Popup = ({setPopup, itemId, popRoute, setPoproute, itemRemoved, setItemRem
                 {popRoute === "add" ? 
                   <AddValidate handleCancel={handleCancel} setIsSubmit={setIsSubmit} isSubmit={isSubmit}/>
                 :
-                <button type="button" onClick={()=>{handleCancel()}} className={classes.edit}>Edit</button>
+                <AddValidate itemId={itemId} edit={true} handleCancel={handleCancel} />
+                
                 }
-
                 <button type="button" onClick={()=>{handleCancel()}} className={classes.cancel}>Cancel</button>
 
                 </>

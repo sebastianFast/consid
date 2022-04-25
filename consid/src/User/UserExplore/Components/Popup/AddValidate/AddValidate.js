@@ -1,10 +1,14 @@
 import React,{useState, useRef, useEffect} from 'react'
 import classes from "./AddValidate.module.css"
 import { addItem } from '../../../../../FETCH/POST/post'
+import { editItem } from '../../../../../FETCH/EDIT/edit'
 
-const AddValidate = ({setIsSubmit, isSubmit, handleCancel}) => {
 
-   
+const AddValidate = ({setIsSubmit, isSubmit, handleCancel, edit, itemId}) => {
+
+
+
+  
 
      //input refs
      const titleRef = useRef()
@@ -32,12 +36,12 @@ const AddValidate = ({setIsSubmit, isSubmit, handleCancel}) => {
 useEffect(()=>{
   setInitialState({
     title : "",
-    author: "",
+    author:  "",
     pages: 0,
-    runTimeMinutes: 0,
+    runTimeMinutes:  0,
     borrower: "",
-    cateogryId: "",
-    type: checkItem
+    cateogryId:  "",
+    type:checkItem
    })
 },[])
 
@@ -86,7 +90,6 @@ useEffect(()=>{
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
    await setFormError(validate(formValue))
     try{
     await setFormValues({
@@ -99,6 +102,11 @@ useEffect(()=>{
        type: checkItem,
        isBorrowable: checkItem?.value === "Ref. Book" ? false : true
      })
+     if(edit){
+        await editItem(formValue, itemId)
+        setIsSubmit(true)
+        return
+     }
       await addItem(formValue)
       setIsSubmit(true)
     }catch(e){

@@ -4,7 +4,7 @@ import classes from "./Inventory.module.css"
 const Inventory = () => {
     return(
         <div className={classes.mainInventory}>
-            Inventory
+            Inte gjord! =)
         </div>
     )
 }

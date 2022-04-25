@@ -1,5 +1,8 @@
-const editUser = async (item ,id) =>{
+
+
+const editUser = async (id, item) =>{
   console.log(item)
+  console.log(id)
     try {
         const response = await fetch('https://localhost:7174/employee/' + id, {
          method: 'PUT',

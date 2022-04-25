@@ -159,6 +159,7 @@ const UserExplore = () => {
     const handleEdit = (e, item) => {
         e.preventDefault()
         setItemId(item?.id)
+       
         handlePopup("edit")
     }
 
@@ -191,8 +192,7 @@ const UserExplore = () => {
                 </div>
             </div>
             <div className={classes.botContainer}>
-                {/* <ItemCards handleEdit={handleEdit} handleRemove={handleRemove} setPopup={setPopup}  returnItem={returnItem} borrowBook={borrowBook} />
-                    */}
+               
             
                 {items?.length >= 1 
                 ?
