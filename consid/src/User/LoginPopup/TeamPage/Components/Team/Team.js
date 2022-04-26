@@ -47,7 +47,7 @@ const Team = () => {
     {employee?.map((employees, index)=>{
         return(
             <>
-            {employees?.isCEO === false && (employees?.managerId !== employees?.team || employees.isManager === false) ? 
+            {employees?.isCEO === false && (employees?.teamId !== employees?.team || employees.isManager === false) ? 
             <li key={index} className={classes.manageLi}>
             <div className={classes.imageHolder}>
               <img src={defaultImage} className={classes.employeeImage} alt="" />

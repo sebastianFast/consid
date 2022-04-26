@@ -5,8 +5,7 @@ import { editUser } from '../../../../../../FETCH/EDIT/edit'
 
 const AddManager = ({employeeTarget, employee, setManager}) => {
 
-    const addManager = async (team) => {
-        console.log(team)
+    const addManager = async () => {
         try{
             const updBody = {
                 firstName: employeeTarget?.firstName,
@@ -14,8 +13,7 @@ const AddManager = ({employeeTarget, employee, setManager}) => {
                 salary: employeeTarget?.salary,
                 isCEO: employeeTarget?.isCEO,
                 isManager: employeeTarget?.isManager,
-                managerId: employeeTarget?.managerId,
-                team: team
+                teamId: employeeTarget?.teamId
             }
            await editUser(employeeTarget.id ,updBody)
            setManager(false)
@@ -41,7 +39,7 @@ const AddManager = ({employeeTarget, employee, setManager}) => {
               {emp?.isManager ? <p className={classes.position}>Manager</p> : null}
               {emp?.isCEO ? <p className={classes.position}>CEO</p> : null}
               </div>
-              <button type="button" onClick={()=>{addManager(emp.managerId)}} className={classes.addToTeam}>Add Manager</button>
+              <button type="button" onClick={()=>{addManager(emp.teamId)}} className={classes.addToTeam}>Add Manager</button>
           </div>
           : null}
           </>

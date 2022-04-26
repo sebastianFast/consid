@@ -8,11 +8,6 @@ namespace webAPI.Entities
     public decimal Salary {get; init;}
     public bool IsCEO {get; init;}
     public bool IsManager {get; init;}
-    public int ManagerId {get; init;}
-    public int Team {get; init;}
-    
-
+    public Guid TeamId {get; init;} = Guid.Empty;
 }
-
-
 }

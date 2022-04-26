@@ -35,6 +35,7 @@ BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String))
 builder.Services.AddSingleton<IItemsRepository, MongoDBItemsRepository>();
 builder.Services.AddSingleton<IEmployeeRepository, MongoDBEmployeeRepository>();
 builder.Services.AddSingleton<ICategoryRepository, MongoDBCategoryRepository>();
+builder.Services.AddSingleton<ITeamRepository, MongoDBTeamRepository>();
  
 builder.Services.AddSingleton<IMongoClient>(serviceProvider => 
 {

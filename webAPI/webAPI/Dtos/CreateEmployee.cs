@@ -12,8 +12,7 @@ namespace webAPI.Dtos
     public decimal Salary {get; init;}
     public bool IsCEO {get; init;}
     public bool IsManager {get; init;}
-    public int ManagerId {get; set;}
+    public Guid TeamId {get; set;} = Guid.Empty;
     
-    public int Team {get; set;}
     }
 }

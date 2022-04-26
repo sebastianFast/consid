@@ -18,7 +18,7 @@ const Manage = ({admin}) => {
     id: "",
     isManager: undefined,
     isCEO: undefined,
-    managerId: "",
+    teamId: "",
     team: ""
   })
 
@@ -103,7 +103,7 @@ const handleEmployee = async (emp) =>{
       salary: emp.salary,
       isCEO: emp.isCEO,
       isManager: emp.isManager,
-      managerId: emp.managerId,
+      teamId: emp.teamId,
       id: emp.id,
       team: emp.team
     })

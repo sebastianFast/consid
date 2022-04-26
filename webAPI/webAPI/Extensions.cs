@@ -26,7 +26,7 @@ namespace webAPI
             Salary = employee.Salary,
             IsCEO = employee.IsCEO,
             IsManager = employee.IsManager,
-            ManagerId = employee.ManagerId
+            TeamId = employee.TeamId
         };
     }
 
@@ -36,5 +36,13 @@ namespace webAPI
             Id = category.Id
         };
     }
+      public static TeamDto AsDto(this Team team){
+        return new TeamDto{
+               Id = team.Id,
+            ManagerId = team.ManagerId
+        };
     }
+    }
+      
+    
 }

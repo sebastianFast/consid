@@ -18,9 +18,11 @@ namespace webAPI.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeRepository repository;
+        private readonly ITeamRepository teamRepository;
 
-        public EmployeeController(IEmployeeRepository repository){
+        public EmployeeController(IEmployeeRepository repository, ITeamRepository teamRepository){
             this.repository = repository;
+            this.teamRepository = teamRepository;
         }
 
         // GET /employee/all
@@ -72,7 +74,7 @@ namespace webAPI.Controllers
         }
 
 
-
+        [Authorize(Roles = "IsCEO, IsManager")]
         //POST /employee
         [HttpPost]
         public async Task<ActionResult<EmployeeDto>> CreateItemAsync(CreateEmployeeDto employeeDto){
@@ -108,37 +110,6 @@ namespace webAPI.Controllers
                     sal = new EmployeeDto {Salary = (decimal)(employeeDto.Salary * ceoCoe)};
                 }
 
-                //Employee Team
-               
-
-                //Assign manager ID's
-                //Tänkte använda det här för team systemet och managing systemet
-                //Fick inte teams att fungera -- när man console loggar den så är den rätt men 
-                //När den skapas så blir team 0 av någon anledning -- 
-                
-                //0 for Employee
-                //1 for CEO
-                //2 or highest + 1 for Managers
-                if(employeeDto.IsManager == false){
-                    employeeDto.ManagerId = 0;
-                }
-                if(employeeDto.IsCEO == true){
-                    employeeDto.ManagerId = 1;
-                }
-                if(employeeDto.IsManager == true){
-                    var biggest = 2;
-
-                  for(int i = 0; i<existingList.Count; i++){
-                    if(existingList[i].ManagerId >= biggest){
-                        biggest = existingList[i].ManagerId + 1;
-                    } 
-                  }
-                    employeeDto.ManagerId = biggest;  
-                }
-
-                employeeDto.Team = employeeDto.ManagerId;
-                Console.WriteLine(employeeDto.Team);
-
                 //Create new Employee
                 Employee employee = new(){
                 Id = Guid.NewGuid(),
@@ -147,11 +118,9 @@ namespace webAPI.Controllers
                 Salary = sal.Salary,
                 IsCEO = employeeDto.IsCEO,
                 IsManager = employeeDto.IsManager,
-                ManagerId = employeeDto.ManagerId,
-                Team = employeeDto.Team
+                TeamId = employeeDto.TeamId
             };
 
-            Console.WriteLine(employee);
 
             await repository.CreateEmployeeAsync(employee);
 
@@ -170,10 +139,9 @@ namespace webAPI.Controllers
               
                 List<Employee> existingList = (List<Employee>) repository.GetEmployeesAsync().Result;
                 existingList.ForEach(employee => {
-                if(employeeDto.IsCEO == true && employee.IsCEO == true){
-                    throw new Exception("Can only have one CEO!");
-                }
-             
+                    if(employeeDto.IsCEO == true && employee.IsCEO == true){
+                        throw new Exception("Can only have one CEO!");
+                    }
                 });
 
 
@@ -193,8 +161,8 @@ namespace webAPI.Controllers
                     return NotFound();
                 }
 
-                  //Check for manager and CEO
-                
+                //Check for manager and CEO
+                //Both update and team creation
                 if(employeeDto.IsCEO == true && existingEmployee.IsManager == false){
                     throw new Exception("CEO's cant update Employees");
                 }
@@ -205,7 +173,14 @@ namespace webAPI.Controllers
                     throw new Exception("Employees cant update users");
                 }
 
-            
+                if(employeeDto.TeamId != existingEmployee.TeamId){
+                   var check = teamRepository.GetTeamAsync(employeeDto.TeamId);
+                     if(check is null){
+                        return NotFound();
+                        }
+                }
+            // om uppdatering av teamId
+            // fråga teamRepository; giltig?
 
             //Update Employee
             Employee updatedEmployee = existingEmployee with {
@@ -214,8 +189,7 @@ namespace webAPI.Controllers
                 Salary = employeeDto.Salary,
                 IsCEO = employeeDto.IsCEO,
                 IsManager = employeeDto.IsManager,
-                ManagerId = employeeDto.ManagerId,
-                Team = employeeDto.Team
+                TeamId = employeeDto.TeamId
             };
 
             await repository.UpdateEmployeeAsync(updatedEmployee);

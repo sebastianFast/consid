@@ -16,7 +16,7 @@ const HandleEmployee = ({setEditEmployee, employeeHolder}) => {
         firstname: employeeHolder.firstName,
         lastname: employeeHolder.lastName,
         salary: employeeHolder.salary,
-        managerId : employeeHolder.managerId ? employeeHolder.managerId : 0,
+        teamId : employeeHolder.teamId ? employeeHolder.teamId : 0,
         isCEO: selectRef.current?.value === "CEO" ? true : false,
         isManager: selectRef.current?.value === "Manager" ? true : false
       })
@@ -26,7 +26,7 @@ const HandleEmployee = ({setEditEmployee, employeeHolder}) => {
     const itemStatus = (e) => {
         setCheckItem(e.target.value)
         if(selectRef.current.value === "CEO"){
-        setDetails({...details, isCEO: true, isManager: false, managerId: 0})
+        setDetails({...details, isCEO: true, isManager: false, teamId: 0})
         return
         }
         if(selectRef.current.value === "Manager"){
@@ -34,7 +34,7 @@ const HandleEmployee = ({setEditEmployee, employeeHolder}) => {
         return
         }
         if(selectRef.current.value !== "Manager" && selectRef.current.value !== "CEO"){
-        setDetails({...details, isCEO: false, isManager: false, managerId: 0})
+        setDetails({...details, isCEO: false, isManager: false, teamId: 0})
         return
         }
     }
@@ -91,8 +91,8 @@ const HandleEmployee = ({setEditEmployee, employeeHolder}) => {
         </div>
         {checkItem === "Manager" || details.isManager === true ? 
         <div className={classes.formGroups}>
-             <label className={classes.label} htmlFor="managerId" id="managerId">Manager ID</label>
-             <input  type="number" name="managerId" id="managerId" onChange={e => setDetails({...details, managerId: e.target.value})} placeholder={employeeHolder.managerId}  value={details.managerId} />
+             <label className={classes.label} htmlFor="teamId" id="teamId">Manager ID</label>
+             <input  type="number" name="teamId" id="teamId" onChange={e => setDetails({...details, teamId: e.target.value})} placeholder={employeeHolder.teamId}  value={details.teamId} />
         </div>
         : null}
         
